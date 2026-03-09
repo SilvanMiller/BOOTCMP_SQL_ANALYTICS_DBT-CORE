@@ -64,54 +64,6 @@ O TCL ou Linguagem de Controle de Transação é usado para gerenciar transaçõ
 
 Essa separação de responsabilidades ajuda a manter a organização e eficiência das operações do banco de dados, além de garantir que as ações executadas em um ambiente de banco de dados sejam seguras e alinhadas com as necessidades da organização.
 
-## Se olharmos os comandos que fizemos ontem...
-
-1) Esse comando é de qual subconjunto?
-
-```sql
-SELECT * FROM customers WHERE country='Mexico';
-```
-
-2) Esse comando é de qual subconjunto?
-
-```sql
-INSERT INTO customers VALUES ('ALFKI', 'Alfreds Futterkiste', 'Maria Anders', 'Sales Representative', 'Obere Str. 57', 'Berlin', NULL, '12209', 'Germany', '030-0074321', '030-0076545');
-INSERT INTO customers VALUES ('ANATR', 'Ana Trujillo Emparedados y helados', 'Ana Trujillo', 'Owner', 'Avda. de la Constitución 2222', 'México D.F.', NULL, '05021', 'Mexico', '(5) 555-4729', '(5) 555-3745');
-INSERT INTO customers VALUES ('ANTON', 'Antonio Moreno Taquería', 'Antonio Moreno', 'Owner', 'Mataderos  2312', 'México D.F.', NULL, '05023', 'Mexico', '(5) 555-3932', NULL);
-INSERT INTO customers VALUES ('AROUT', 'Around the Horn', 'Thomas Hardy', 'Sales Representative', '120 Hanover Sq.', 'London', NULL, 'WA1 1DP', 'UK', '(171) 555-7788', '(171) 555-6750');
-INSERT INTO customers VALUES ('BERGS', 'Berglunds snabbköp', 'Christina Berglund', 'Order Administrator', 'Berguvsvägen  8', 'Luleå', NULL, 'S-958 22', 'Sweden', '0921-12 34 65', '0921-12 34 67');
-```
-
-3) Esse comando é de qual subconjunto?
-
-```sql
-CREATE TABLE suppliers (
-    supplier_id smallint NOT NULL,
-    company_name character varying(40) NOT NULL,
-    contact_name character varying(30),
-    contact_title character varying(30),
-    address character varying(60),
-    city character varying(15),
-    region character varying(15),
-    postal_code character varying(10),
-    country character varying(15),
-    phone character varying(24),
-    fax character varying(24),
-    homepage text
-);
-```
-
-4) Esse comando é de qual subconjunto?
-
-```sql
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-```
-
 ## Agora vamos para nossas primeiras QUERY? (Data Query Language)
 
 Data Query Language (DQL) é um subconjunto da linguagem SQL (Structured Query Language) utilizado especificamente para consultar dados em bancos de dados. DQL é fundamental para extrair informações, realizar análises e gerar relatórios a partir dos dados armazenados em um sistema de gerenciamento de banco de dados relacional (RDBMS). O principal comando em DQL é o `SELECT`, que é amplamente utilizado para selecionar dados de uma ou mais tabelas.

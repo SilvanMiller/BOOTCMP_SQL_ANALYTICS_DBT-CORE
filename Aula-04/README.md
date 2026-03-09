@@ -103,10 +103,10 @@ ORDER BY customer_id;
 * **`MAX(freight) OVER (PARTITION BY customer_id)`**: Utiliza a função de janela `MAX` para calcular o valor máximo de frete para cada `customer_id`.
 * **`AVG(freight) OVER (PARTITION BY customer_id)`**: Utiliza a função de janela `AVG` para calcular o valor médio de frete para cada `customer_id`.
 
-### Características das Funções de Janela:
+### Características das `Windows Function`:
 
-* **Funções de Janela (`OVER`)**: As funções de janela permitem que você execute cálculos sobre um conjunto de linhas relacionadas a cada entrada. Ao usar o `PARTITION BY customer_id`, a função de janela é reiniciada para cada novo `customer_id`. Isso significa que cada cálculo de `MIN`, `MAX`, e `AVG` é confinado ao conjunto de ordens de cada cliente individualmente.
-* **`DISTINCT`**: A cláusula `DISTINCT` é utilizada para garantir que cada `customer_id` apareça apenas uma vez nos resultados finais, juntamente com seus respectivos valores de frete mínimo, máximo e médio. Isso é necessário porque as funções de janela calculam valores para cada linha, e sem `DISTINCT`, cada `customer_id` poderia aparecer múltiplas vezes se houver várias ordens por cliente.
+* **`Windows Function` (`OVER`)**: As `Windows Function` permitem que você execute cálculos sobre um conjunto de linhas relacionadas a cada entrada. Ao usar o `PARTITION BY customer_id`, a função de janela é reiniciada para cada novo `customer_id`. Isso significa que cada cálculo de `MIN`, `MAX`, e `AVG` é confinado ao conjunto de ordens de cada cliente individualmente.
+* **`DISTINCT`**: A cláusula `DISTINCT` é utilizada para garantir que cada `customer_id` apareça apenas uma vez nos resultados finais, juntamente com seus respectivos valores de frete mínimo, máximo e médio. Isso é necessário porque as `Windows Function` calculam valores para cada linha, e sem `DISTINCT`, cada `customer_id` poderia aparecer múltiplas vezes se houver várias ordens por cliente.
 
 ## Colapso
 
@@ -166,11 +166,11 @@ GROUP BY customer_id;
 
 Este exemplo mostra claramente como o `GROUP BY` "colapsa" as linhas em grupos, permitindo cálculos resumidos, mas também impõe restrições sobre quais colunas podem ser selecionadas diretamente.
 
-Para ilustrar como evitar o "colapso" das linhas utilizando funções de janela (window functions) em vez de `GROUP BY`, vamos utilizar as mesmas estatísticas de frete (mínimo, máximo e médio) por cliente, mas manter todas as linhas de pedidos individuais visíveis no conjunto de resultados. As funções de janela permitem calcular agregações enquanto ainda se mantém cada linha distinta na saída.
+Para ilustrar como evitar o "colapso" das linhas utilizando `Windows Function` (window functions) em vez de `GROUP BY`, vamos utilizar as mesmas estatísticas de frete (mínimo, máximo e médio) por cliente, mas manter todas as linhas de pedidos individuais visíveis no conjunto de resultados. As `Windows Function` permitem calcular agregações enquanto ainda se mantém cada linha distinta na saída.
 
-### Consulta com Funções de Janela
+### Consulta com `Windows Function`
 
-Aqui está como você pode escrever uma consulta que utiliza funções de janela para calcular o frete mínimo, máximo e médio para cada cliente sem colapsar as linhas:
+Aqui está como você pode escrever uma consulta que utiliza `Windows Function` para calcular o frete mínimo, máximo e médio para cada cliente sem colapsar as linhas:
 
 ```sql
 SELECT 
@@ -187,13 +187,13 @@ ORDER BY customer_id, order_id;
 ### Explicação da Consulta
 
 * **Seleção de Colunas**: `customer_id`, `order_id`, e `freight` são selecionados diretamente, o que mantém cada linha de pedido individual visível no resultado.
-* **Funções de Janela**: `MIN(freight) OVER`, `MAX(freight) OVER`, e `AVG(freight) OVER` são aplicadas com a cláusula `PARTITION BY customer_id`. Isso significa que as estatísticas de frete são calculadas para cada grupo de `customer_id`, mas a aplicação é feita sem agrupar as linhas em um único resultado por cliente. Cada linha no conjunto de resultados original mantém sua identidade única.
-* **`PARTITION BY customer_id`**: Assegura que as funções de janela são recalculadas para cada cliente. Cada pedido mantém sua linha, mas agora também inclui as informações agregadas de frete específicas para o cliente ao qual o pedido pertence.
+* **`Windows Function`**: `MIN(freight) OVER`, `MAX(freight) OVER`, e `AVG(freight) OVER` são aplicadas com a cláusula `PARTITION BY customer_id`. Isso significa que as estatísticas de frete são calculadas para cada grupo de `customer_id`, mas a aplicação é feita sem agrupar as linhas em um único resultado por cliente. Cada linha no conjunto de resultados original mantém sua identidade única.
+* **`PARTITION BY customer_id`**: Assegura que as `Windows Function` são recalculadas para cada cliente. Cada pedido mantém sua linha, mas agora também inclui as informações agregadas de frete específicas para o cliente ao qual o pedido pertence.
 * **`ORDER BY customer_id, order_id`**: Ordena os resultados primeiro por `customer_id` e depois por `order_id`, facilitando a leitura dos dados.
 
-### Vantagens das Funções de Janela
+### Vantagens das `Windows Function`
 
-* **Preservação de Dados Detalhados**: Ao contrário do `GROUP BY`, que agrega e reduz os dados a uma linha por grupo, as funções de janela mantêm cada linha individual do conjunto de dados original visível. Isso é útil para análises detalhadas onde você precisa ver tanto os valores agregados quanto os dados de linha individual.
+* **Preservação de Dados Detalhados**: Ao contrário do `GROUP BY`, que agrega e reduz os dados a uma linha por grupo, as `Windows Function` mantêm cada linha individual do conjunto de dados original visível. Isso é útil para análises detalhadas onde você precisa ver tanto os valores agregados quanto os dados de linha individual.
 * **Flexibilidade**: Você pode calcular múltiplas métricas de agregação em diferentes partições dentro da mesma consulta sem múltiplas passagens pelos dados ou subconsultas complexas.
 
 Este método é especialmente útil em relatórios e análises detalhadas onde tanto o contexto agregado quanto os detalhes de cada evento individual (neste caso, cada pedido) são importantes para uma compreensão completa dos dados.
@@ -293,7 +293,7 @@ FROM
 ### Explicação da Consulta Ajustada:
 
 * **Seleção de Dados**: A consulta seleciona o `order_id` e calcula `total_sale` como o produto de `unit_price` e `quantity`.
-* **Funções de Janela**:
+* **`Windows Function`**:
     * **`PERCENT_RANK()`**: Aplicada com uma partição por `order_id` e ordenada pelo `total_sale` de forma descendente, calcula a posição percentual de cada venda em relação a todas as outras no mesmo pedido.
     * **`CUME_DIST()`**: Similarmente, calcula a distribuição acumulada das vendas, indicando a proporção de vendas que não excedem o `total_sale` da linha atual dentro de cada pedido.
 * **Arredondamento**: Os resultados de `PERCENT_RANK()` e `CUME_DIST()` são arredondados para duas casas decimais para facilitar a interpretação.
@@ -345,4 +345,4 @@ JOIN
   shippers ON shippers.shipper_id = orders.ship_via;
 ```
 
-* **LEAD() e LAG(): Estas funções de janela são usadas para acessar dados de linhas anteriores ou subsequentes dentro de uma partição definida, muito úteis para comparar o valor de frete entre ordens consecutivas de um mesmo cliente.
+* **LEAD() e LAG(): Estas `Windows Function` são usadas para acessar dados de linhas anteriores ou subsequentes dentro de uma partição definida, muito úteis para comparar o valor de frete entre ordens consecutivas de um mesmo cliente.

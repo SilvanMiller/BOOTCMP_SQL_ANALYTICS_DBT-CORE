@@ -17,14 +17,14 @@ Este bootcamp é um **programa intensivo de SQL e Analytics Engineering** projet
 
 ## 📚 Recursos do Bootcamp
 
-- *[Aula-01](./Criando_banco_Norhwind/)* - **Visão Geral e Preparação do ambiente SQL**
+- *[Aula-01](./Aula-01%20-%20Criando_banco_Norhwind/)* - **Visão Geral e Preparação do ambiente SQL**
 - *[Aula-02](./Aula-02/)* - **SQL para Analytics: Nossas primeiras consultas**
 - *[Aula-03](./Aula-03/)* - **SQL para Analytics: Join and Having in SQL**
 - *[Aula-04](./Aula-04/)* - **Windows Function**
 - *[Aula-05](./Aula-05/)* - **Projeto de Análise de dados**
 - *[Aula-06](./Aula-06/)* - **CTE vs Subqueries vs Views vs Temporary Tables vs Materialized Views**
 - *[Aula-07](./Aula-07/)* - **Stored Procedures**
-- *[Aula-08]()* - **CTE vs Subqueries vs Views vs Temporary Tables vs Materialized Views**
+- *[Aula-08](./Aula-08/)* - **CTE vs Subqueries vs Views vs Temporary Tables vs Materialized Views**
 - *[Aula-09](./Aula-09/)* - **Triggers (Gatilhos) e Projeto Prático II**
 - *[Aula-10]()* - **Transação**
 - *[Aula-11]()* - **Ordem de consulta**

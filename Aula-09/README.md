@@ -1,6 +1,6 @@
 ## Aula 09 - Triggers (Gatilhos) e Projeto Prático II
 
-Papars recomendados(base de conhecimento) https://github.com/rxin/db-readings?tab=readme-ov-file
+Papars recomendados https://github.com/rxin/db-readings?tab=readme-ov-file
 
 ## O que sâo Triggers?
 

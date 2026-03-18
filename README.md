@@ -26,8 +26,8 @@ Este bootcamp é um **programa intensivo de SQL e Analytics Engineering** projet
 - *[Aula-07](./Aula-07/)* - **Stored Procedures**
 - *[Aula-08](./Aula-08/)* - **CTE vs Subqueries vs Views vs Temporary Tables vs Materialized Views**
 - *[Aula-09](./Aula-09/)* - **Triggers (Gatilhos) e Projeto Prático II**
-- *[Aula-10]()* - **Transação**
-- *[Aula-11]()* - **Ordem de consulta**
+- *[Aula-10](./Aula-10/)* - **Transação**
+- *[Aula-11](./Aula-11/)* - **Ordem de consulta**
 - *[Aula-12]()* - **Database Indexing**
 - *[Aula-13]()* - **Database Partition**
 - *[Aula-14]()* - **Aula 14** (conteúdo a ser definido)

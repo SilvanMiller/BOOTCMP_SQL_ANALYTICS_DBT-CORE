@@ -42,6 +42,3 @@ COMMIT;
 
 --Hint: The transaction might succeed if retried.
 --Dica: A transação poderá ser concluída com sucesso se for repetida.
-
-
-
